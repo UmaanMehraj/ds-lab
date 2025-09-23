@@ -1,31 +1,35 @@
+// Programme representing various str operations using ptrs
 #include <stdio.h>
 #include <string.h>
 
-void traversal();
-int strLength();
-int isPalindrome();
+void traversal(char str[]);
+int strLength(char str[]);
+int isPalindrome(char str[]);
+void str_reverse(char str[]);
 
 int main()
 {
-    // traversal();
-    // printf("The length of the string is %d", strLength());
-    if (isPalindrome())
-    {
-        printf("The string is Palindrome");
-    }
-    else
-    {
-        printf("Not a palindrome");
-    }
+    char str[100];
+    printf("Enter string: ");
+    scanf("%s", str);
+    // traversal(str);
+    // printf("The length of the string is %d", strLength(str));
+    // if (isPalindrome(str))
+    // {
+    //     printf("The string is Palindrome");
+    // }
+    // else
+    // {
+    //     printf("Not a palindrome");
+    // }
+
+    str_reverse(str);
 }
 
-void traversal()
+void traversal(char str[])
 {
-    char str[100];
-    char *p;
 
-    printf("Enter string:  ");
-    scanf("%s", str);
+    char *p;
 
     p = &str[0];
     while (*p != '\0')
@@ -36,13 +40,10 @@ void traversal()
     printf("\n");
 }
 
-int strLength()
+int strLength(char str[])
 {
-    char str[100];
-    char *p;
 
-    printf("Enter string: ");
-    scanf("%s", str);
+    char *p;
 
     p = &str[0];
 
@@ -56,13 +57,10 @@ int strLength()
     return length;
 }
 
-int isPalindrome()
+int isPalindrome(char str[])
 {
-    char str[100];
-    char *p, *q;
 
-    printf("Enter string: ");
-    scanf("%s", str);
+    char *p, *q;
 
     int length = strlen(str) - 1;
 
@@ -85,4 +83,24 @@ int isPalindrome()
         p++;
         q--;
     }
+}
+
+void str_reverse(char str[])
+{
+    char *p = &str[0];
+    char *q = &str[0];
+
+    while (*q != '\0')
+    {
+        q++;
+    }
+    q--;
+
+    while (*q != *p)
+    {
+        printf("%c", *q);
+        q--;
+    }
+    printf("%c", *q);
+    printf("\n");
 }

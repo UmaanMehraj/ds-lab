@@ -1,4 +1,4 @@
-// Program representing different Array Operations
+// Programme representing different Array Operations
 #include <stdio.h>
 
 // Function declarations
