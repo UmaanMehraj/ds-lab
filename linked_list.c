@@ -3,12 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Linked List
 typedef struct Node
 {
     int data;
     struct Node *next;
 } Node;
 
+// Function declarations
 Node *createNode(int data);
 void printList(Node *node);
 
