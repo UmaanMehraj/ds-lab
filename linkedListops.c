@@ -11,7 +11,7 @@ typedef struct Node
 void traversal(Node *node);
 void *createNode(int data);
 void *insertAtBeginning(Node *head, int data);
-// void insertAtBeginning(Node **head, int data);
+int counNodes(Node *head);
 
 int main()
 {
@@ -29,7 +29,8 @@ int main()
     nodeTwo->next = nodeThree;
 
     traversal(head);
-    insertAtBeginning(head, 5);
+    // insertAtBeginning(head, 5);
+    printf("Number of nodes are %d \n", counNodes(head));
 
     return 0;
 }
@@ -67,4 +68,15 @@ void *insertAtBeginning(Node *head, int data)
     head = newNode;
 
     printf("Insertion of a new node with data %d succesful! \n", data);
+}
+
+int counNodes(Node *head)
+{
+    int count = 0;
+    while (head)
+    {
+        count++;
+        head = head->next;
+    }
+    return count;
 }
