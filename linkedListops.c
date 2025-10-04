@@ -9,33 +9,45 @@ typedef struct Node
 
 // Function declaration
 void traversal(Node *node);
+void *createNode(int data);
+void *insertAtBeginning(Node *head, int data);
 // void insertAtBeginning(Node **head, int data);
 
 int main()
 {
     // Header node
     Node *head;
-    Node *temp;
 
-    Node *one = (Node *)malloc(sizeof(Node));
-    Node *two = (Node *)malloc(sizeof(Node));
-    Node *three = (Node *)malloc(sizeof(Node));
+    // some nodes
+    Node *nodeOne = createNode(1);
+    head = nodeOne;
 
-    head = one;
-    temp = head;
+    Node *nodeTwo = createNode(2);
+    Node *nodeThree = createNode(3);
 
-    one->data = 7;
-    two->data = 9;
-    three->data = 12;
+    nodeOne->next = nodeTwo;
+    nodeTwo->next = nodeThree;
 
-    one->next = two;
-    two->next = three;
-    three->next = NULL;
-
-    // insertAtBeginning(&head, 4);
-    traversal(temp);
+    traversal(head);
+    insertAtBeginning(head, 5);
 
     return 0;
+}
+
+void *createNode(int data)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (!newNode)
+    {
+        printf("Memory allocation failed!");
+    }
+    else
+    {
+        newNode->data = data;
+        newNode->next = NULL;
+    }
+
+    return newNode;
 }
 
 void traversal(Node *node)
@@ -47,10 +59,12 @@ void traversal(Node *node)
     }
 }
 
-// void insertAtBeginning(Node **head, int data)
-// {
-//     Node *newNode = (Node *)malloc(sizeof(Node));
-//     newNode->data = data;
-//     newNode->next = *head;
-//     *head = newNode;
-// }
+void *insertAtBeginning(Node *head, int data)
+{
+    Node *newNode = createNode(data);
+
+    newNode->next = head;
+    head = newNode;
+
+    printf("Insertion of a new node with data %d succesful! \n", data);
+}
