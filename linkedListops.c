@@ -12,6 +12,7 @@ void traversal(Node *node);
 void *createNode(int data);
 void *insertAtBeginning(Node *head, int data);
 int counNodes(Node *head);
+void *insertAtEnd(Node *temp, int data);
 
 int main()
 {
@@ -30,7 +31,8 @@ int main()
 
     traversal(head);
     // insertAtBeginning(head, 5);
-    printf("Number of nodes are %d \n", counNodes(head));
+    // printf("Number of nodes are %d \n", counNodes(head));
+    insertAtEnd(head, 20);
 
     return 0;
 }
@@ -79,4 +81,16 @@ int counNodes(Node *head)
         head = head->next;
     }
     return count;
+}
+
+void *insertAtEnd(Node *temp, int data)
+{
+    Node *newNode = createNode(data);
+    while (temp)
+    {
+        temp = temp->next;
+    }
+    temp = newNode;
+
+    printf("Node succesfully appended with data :%d \n", data);
 }
