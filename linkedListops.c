@@ -13,6 +13,7 @@ void *createNode(int data);
 void *insertAtBeginning(Node *head, int data);
 int counNodes(Node *head);
 void *insertAtEnd(Node *temp, int data);
+void *insertAtanyPos(Node *temp, int data, int pos);
 
 int main()
 {
@@ -32,7 +33,12 @@ int main()
     traversal(head);
     // insertAtBeginning(head, 5);
     // printf("Number of nodes are %d \n", counNodes(head));
-    insertAtEnd(head, 20);
+    // insertAtEnd(head, 20);
+    // insertAtanyPos(head, 33, 2);
+
+    free(nodeOne);
+    free(nodeTwo);
+    free(nodeThree);
 
     return 0;
 }
@@ -93,4 +99,21 @@ void *insertAtEnd(Node *temp, int data)
     temp = newNode;
 
     printf("Node succesfully appended with data :%d \n", data);
+}
+
+void *insertAtanyPos(Node *temp, int data, int pos)
+{
+    Node *newNode = createNode(data);
+
+    for (int i = 2; i < pos; i++)
+    {
+        if (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    printf("New node with data %d inserted at position %d \n", data, pos);
 }
