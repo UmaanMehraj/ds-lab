@@ -14,6 +14,7 @@ void *insertAtBeginning(Node *head, int data);
 int counNodes(Node *head);
 void *insertAtEnd(Node *temp, int data);
 void *insertAtanyPos(Node *temp, int data, int pos);
+void *deleteFromBeginning(Node *head);
 
 int main()
 {
@@ -116,4 +117,12 @@ void *insertAtanyPos(Node *temp, int data, int pos)
     temp->next = newNode;
 
     printf("New node with data %d inserted at position %d \n", data, pos);
+}
+
+void *deleteFromBeginning(Node *head)
+{
+
+    head = head->next;
+
+    printf("Deleted sucessfuly! \n");
 }
