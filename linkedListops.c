@@ -15,6 +15,8 @@ int counNodes(Node *head);
 void *insertAtEnd(Node *temp, int data);
 void *insertAtanyPos(Node *temp, int data, int pos);
 void *deleteFromBeginning(Node *head);
+void *deleteFromEnd(Node *temp);
+void *deleteFromAnypPos(Node *temp, int position);
 
 int main()
 {
@@ -125,4 +127,27 @@ void *deleteFromBeginning(Node *head)
     head = head->next;
 
     printf("Deleted sucessfuly! \n");
+}
+
+void *deleteFromEnd(Node *temp)
+{
+    while (temp->next->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+
+    printf("Last node deleted succesfully! \n");
+}
+
+void *deleteFromAnypPos(Node *temp, int position)
+{
+    for (int i = 2; i < position; i++)
+    {
+        if (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+    }
+    temp->next = temp->next->next;
 }
